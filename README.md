@@ -3,10 +3,14 @@ Synchronization methods with Azure AD Connect
 Use Sentinel. Run Failed Login Attempt Query. Turn on Fusion Machine Learning.
 
 <h2>Description</h2>
-The tool used to configure directory synchronization is called Azure AD Connect. Azure AD Connect consists of, or can leverage, the following components:
-1. Synchronization services
-2. Active Directory Federation Services (AD FS)
-3. Health Monitoring
+The tool used to configure directory synchronization is called Azure AD Connect. Microsoft AD Connect <b>features</b> <br />
+<p><b>Password hash synchronization -</b> A sign-in method that synchronizes a hash of a users on-premises AD password with Microsoft Entra ID.</p>
+<p><b>Pass-through authentication -</b> A sign-in method that allows users to use the same password on-premises and in the cloud, but doesn't require the additional infrastructure of a federated environment.</p>
+<p><b>Federation integration -</b> Federation is an optional part of Microsoft Entra Connect and can be used to configure a hybrid environment using an on-premises AD FS infrastructure. It also provides AD FS management capabilities such as certificate renewal and additional AD FS server deployments.</p>
+<p><b>Synchronization -</b> Responsible for creating users, groups, and other objects. As well as, making sure identity information for your on-premises users and groups is matching the cloud. This synchronization also includes password hashes.</p>
+<p><b>Health Monitoring -</b> Microsoft Entra Connect Health can provide robust monitoring and provide a central location in the Microsoft Entra admin center to view this activity.</p>
+<img src="arch AADC.png" height="50%" width="50%" /> <br />
+
 
 <p>Azure AD Connect supports multiple AD forests and multiple Exchange organizations to a single Microsoft 365 tenant. It synchronizes users, groups, and contact objects from your
 on-premises AD to Microsoft 365.<br />
@@ -15,68 +19,25 @@ written back to an on-premises AD.<br />
 The principles of Azure AD Connect are shown in the following diagram:<br />
 <img src="1.png" height="50%" width="50%" />
 <br />
-<p> Express Settings: default setting for Azure AD Connect and is designed for use with password hash synchronization from a single AD forest. <br /></p>
+<p> <b>Express Settings:</b> default setting for Azure AD Connect and is designed for use with password hash synchronization from a single AD forest. <br /></p>
 <img src="Express.png" height="50%" width="50%" />
 <br />
-<p>Custom Settings: With the custom settings installation, you are provided with the following options to extend your on-premises identities in the cloud using Azure AD
+<p><b>Custom Settings:</b> With the custom settings installation, you are provided with the following options to extend your on-premises identities in the cloud using Azure AD
 Connect. </p><br />
 <img src="Custom.png" height="50%" width="50%" /> <br />
 
 
+<h2>Microsoft Azure AD Connect Health</h2>
+ <p>Microsoft Azure AD Connect Health provides robust monitoring of your on-premises identity infrastructure. It enables you to maintain a reliable connection to Microsoft 365 and Microsoft Online Services. This reliability is achieved by providing monitoring capabilities for your key identity components. Also, it makes the key data points about these components easily accessible.</p>
+<p>Use the Microsoft Azure AD Connect Health portal to view alerts, performance monitoring, usage analytics, and other information. Microsoft Azure AD Connect Health enables the single lens of health for your key identity components in one place.</p>
 
-</p>
-<br />
+<img src="aadconnecthealth2.png" height="50%" width="50%" /> <br />
 
-
-<h2>Environments Used </h2>
-- <b>Microsoft Azure Sentinel Portal </b>
-
-<h2>Prerequisites</h2>
-
--<b> Password Lockout Settings modified by anyone assigned the following roles:
- - Log Analytics Contributor
- - Log Analytics Reader
- - Global Administrator
- </b>
-- <b> Licenses:  Azure AD trial or Premium P1 or higher licenses </b>
-
-<h2>Program walk-through:</h2>
-
-<h3>Steps: </h3>
-1. Steps:
-1.	Go to Azure portal --> Azure Sentinel
-2.	Select 	Azure Sentinel Workspace
-3.	Select Hunting --> select Query ‘Failed login attempt’ --> Run Query
-4.	Go to Analytics section --> select active rule --> edit
-5.	Enable status of rule --> Configure it
-6.	Review & Save
-
-<h3>Screenshots:</h3>
-
-<p align="center">
-Select Log Workspace Analytics:  <br/>
-<img src="select log workspace analytics.png" height="50%" width="50%" />
-<br />
-<br />
-Select Query:  <br/>
-<img src="query.png" height="50%" width="50%" />
-<br />
-<br />
-Active Rules of Query: <br/>
-<img src="active rules.png" height="50%" width="50%"/>
-<br />
-<br />
-Enable Status: <br/>
-<img src="enable status of rule.png" height="65%" width="50%"/>
-<br />
-<br />
-Result: <br/>
-<img src="result.png" height="65%" width="50%"/>
-<br />
-<br />
+<h2>Licnese Requirement:</h2>
+<p>1. Microsoft Azure AD Connect: Free </p>
+<p>2. Microsoft Azyre AD Connect Health: Azure AD Premium P1</p>
 
 
-</p>
 
 <!--
  ```diff
